@@ -14,17 +14,18 @@ export default function Portfolio() {
           <div className="gap-y-8 flex flex-col">
             <div className="flex flex-col-reverse items-start gap-10 sm:flex-row sm:items-start sm:justify-between">
               <div className="min-w-0 space-y-4.5">
-                {/* <p className="italic">
-                  Hey, I'm 
-                </p>*/}
-                <h1 className="text-4xl uppercase font-black text-neutral-900 sm:text-5xl">
-                  {PROFILE.name.slice(0, 4)}
-                  <span className="ml-4">{PROFILE.name.slice(5, 11)}</span>
-                </h1>
+                <div className="flex items-start flex-col gap-4">
+                  <p className="italic">
+                    Hey, I'm 
+                  </p>
+                  <h1 className="text-4xl uppercase font-black text-neutral-900 sm:text-5xl">
+                    {PROFILE.name.slice(0, 4)}
+                    <span className="ml-4">{PROFILE.name.slice(5, 11)}</span>,
+                  </h1>
+                </div>
                 <p className="max-w-lg text-[15px] leading-relaxed text-neutral-600">
-                  <span className="text-blue-500 font-bold">Software Engineer</span> with over a year
-                  of experience building full-stack applications, from API design through deployment, with a growing
-                  focus on backend systems and architecture.
+                  a <span className="text-blue-500 font-extrabold underline decoration-blue-500 decoration-dashed underline-offset-4">Software Engineer</span> with 1+ year of experience building full-stack applications, with a focus on backend systems,
+                  APIs, and service architecture.
                 </p>
               </div>
             </div>
@@ -60,7 +61,7 @@ export default function Portfolio() {
             <div className="border border-neutral-200 bg-white p-2 pb-7 inset-shadow-sm/25 shadow-lg/35 shadow-blue-500 inset-shadow-blue-300/60">
               <img
                 src={PROFILE.selfie}
-                alt={`${PROFILE.name} — self portrait`}
+                alt={`Yuri's self portrait`}
                 className="block w-32 object-cover sm:w-45"
               />
               <p className="font-['JetBrains_Mono',ui-monospace,monospace] mt-2 text-center text-[10px] tracking-wide text-neutral-500"></p>
@@ -100,7 +101,7 @@ export default function Portfolio() {
               return (
                 <article
                   key={p.name}
-                  className="rounded-xl border inset-shadow-sm hover:inset-shadow-blue-500/50 inset-shadow-blue-500/25 hover:bg-black/2.5 border-neutral-200 p-6 transition-all duration-250 hover:border-neutral-300"
+                  className="rounded-xl border inset-shadow-sm hover:inset-shadow-blue-500/50 inset-shadow-blue-500/25 hover:bg-blue-50/50 border-neutral-200 p-6 transition-all duration-150 hover:border-neutral-300"
                 >
                   <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
                     <h3 className="text-base font-extrabold text-neutral-900 sm:text-[17px]">
@@ -112,13 +113,13 @@ export default function Portfolio() {
                   </div>
 
                   <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                    <p className="text-[13px] font-medium text-neutral-500">{p.definition}</p>
+                    <p className="text-[13px] font-bold text-neutral-700">{p.definition}</p>
                     <span className="text-neutral-300">·</span>
                     <span
-                      className={`inline-flex items-center gap-1.5 text-[13px] font-semibold ${
+                      className={`inline-flex items-center gap-1.5 text-[13px] font-bold ${
                         isOpenSource
                           ? "text-emerald-600"
-                          : "text-neutral-500"
+                          : "text-neutral-400"
                       }`}
                     >
                       {isOpenSource ? "Open-Source" : "Closed-Source"}
