@@ -1,5 +1,5 @@
-import resume from "./public/resume.pdf";
-import selfie from "./public/selfie.webp";
+import resume from "./assets/resume.pdf";
+import selfie from "./assets/selfie.webp";
 
 export const PROFILE = {
   name: "Yuri Okeren",
