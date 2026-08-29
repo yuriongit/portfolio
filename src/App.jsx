@@ -1,39 +1,8 @@
 import { SKILL_META, SKILLS } from "./info";
 import { PROFILE } from "./info";
 import { PROJECTS } from "./info";
-
-const linkClasses =
-  "relative text-neutral-300 hover:text-white transition-colors duration-200 after:absolute after:left-0 after:-bottom-0.5 after:h-px after:w-full after:origin-right after:scale-x-0 after:bg-violet-400 after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100";
-
-function SkillBadge({ name }) {
-  const meta = SKILL_META[name];
-  return (
-    <span
-      className={`inline-flex items-center gap-1.5 rounded-md px-2 py-1 ring-1 text-xs font-medium text-neutral-300 ${
-        meta ? `${meta.bg} ${meta.ring}` : "bg-white/5 ring-white/10"
-      }`}
-    >
-      {meta && (
-        <img
-          src={`https://cdn.simpleicons.org/${meta.icon}/${meta.color}`}
-          alt=""
-          className="h-3 w-3"
-          loading="lazy"
-        />
-      )}
-      {name}
-    </span>
-  );
-}
-
-function SectionHeading({ children }) {
-  return (
-    <h2 className="font-[Fraunces,Georgia,serif] mb-7 flex items-center gap-2 text-xl font-medium text-neutral-100">
-      <span className="inline-block h-2 w-2 rounded-sm bg-violet-400" />
-      {children}
-    </h2>
-  );
-}
+import { SkillBadge } from "./components/SkillBadge"
+import { SectionHeading } from "./components/SectionHeading"
 
 export default function Portfolio() {
   return (

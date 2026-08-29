@@ -1,0 +1,1 @@
+export const linkClasses = "text-neutral-600 hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white decoration-dashed underline underline-offset-4 hover:decoration-blue-700 hover:dark:decoration-blue-400 decoration-transparent";
