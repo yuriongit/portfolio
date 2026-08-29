@@ -1,70 +1,74 @@
-import { SKILL_META, SKILLS } from "./info";
+import { SKILLS } from "./info";
 import { PROFILE } from "./info";
 import { PROJECTS } from "./info";
-import { SkillBadge } from "./components/SkillBadge"
-import { SectionHeading } from "./components/SectionHeading"
+import { SkillBadge } from "./components/SkillBadge";
+import { SectionHeading } from "./components/SectionHeading";
+import { Button, Link } from "./components/Button";
 
 export default function Portfolio() {
   return (
-    <div className="relative min-h-screen overflow-hidden bg-neutral-950/96 font-['Inter',ui-sans-serif,system-ui,sans-serif] text-neutral-100 antialiased">
-      <style>{`@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');`}</style>
-
-
-      <div className="relative mx-auto max-w-2xl px-5 py-16 sm:px-6 sm:py-24">
+    <div className="relative min-h-screen overflow-hidden bg-white text-neutral-900 antialiased tracking-tighter">
+      <div className="relative mx-auto max-w-2xl px-5 py-16 sm:px-6 sm:py-24 w-full">
         {/* Header */}
-        <header className="mb-14 sm:mb-16">
-          <div className="flex flex-col-reverse items-start gap-8 sm:flex-row sm:items-start sm:justify-between">
-            <div className="min-w-0 flex-1">
-              <p className="font-['JetBrains_Mono',ui-monospace,monospace] mb-4 text-[11px] tracking-[0.15em] text-violet-400">
-                {PROFILE.title.toUpperCase()}
-              </p>
-              <h1 className="font-[Fraunces,Georgia,serif] text-4xl font-medium tracking-tight text-white sm:text-5xl">
-                {PROFILE.name}
-              </h1>
-              <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-neutral-400">
-                {PROFILE.blurb}
-              </p>
-            </div>
-
-            {/* Polaroid photo */}
-            <div className="shrink-0 self-center rotate-3 transition-transform duration-300 hover:rotate-0 hover:scale-105 sm:self-start">
-              <div className="border border-neutral-800 bg-neutral-900 p-2 pb-7 shadow-md shadow-violet-950/75">
-                <img
-                  src={PROFILE.selfie}
-                  alt={`${PROFILE.name} — self portrait`}
-                  className="block w-32 object-cover sm:w-40"
-                />
-                <p className="font-['JetBrains_Mono',ui-monospace,monospace] mt-2 text-center text-[10px] tracking-wide text-neutral-500">
+        <header className="mb-14 sm:mb-16 gap-8 flex items-center">
+          <div className="gap-y-8 flex flex-col">
+            <div className="flex flex-col-reverse items-start gap-10 sm:flex-row sm:items-start sm:justify-between">
+              <div className="min-w-0 space-y-4.5">
+                {/* <p className="italic">
+                  Hey, I'm 
+                </p>*/}
+                <h1 className="text-4xl uppercase font-black text-neutral-900 sm:text-5xl">
+                  {PROFILE.name.slice(0, 4)}
+                  <span className="ml-4">{PROFILE.name.slice(5, 11)}</span>
+                </h1>
+                <p className="max-w-lg text-[15px] leading-relaxed text-neutral-600">
+                  <span className="text-blue-500 font-bold">Software Engineer</span> with over a year
+                  of experience building full-stack applications, from API design through deployment, with a growing
+                  focus on backend systems and architecture.
                 </p>
               </div>
             </div>
-          </div>
 
-          <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
-            <a
-              href={PROFILE.resumeUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`${linkClasses} font-medium text-violet-300`}
-            >
-              Resume
-            </a>
-            <a href={PROFILE.github} target="_blank" rel="noopener noreferrer" className={linkClasses}>
-              GitHub
-            </a>
-            <a href={PROFILE.linkedin} target="_blank" rel="noopener noreferrer" className={linkClasses}>
-              LinkedIn
-            </a>
-            <a href={`mailto:${PROFILE.email}`} className={linkClasses}>
-              {PROFILE.email}
-            </a>
-            <a href={`tel:${PROFILE.phone.replace(/[^0-9+]/g, "")}`} className={linkClasses}>
-              {PROFILE.phone}
-            </a>
+            <div className="flex w-fit items-center gap-x-5 text-sm">
+              <div className="bg-black/5 border-black/15 border p-2 flex items-center gap-2 rounded-md">
+                <Button 
+                  isLink={true}
+                  href={PROFILE.resumeUrl} 
+                  text={"Resume"}
+                  size={1} />
+                <Link
+                  text={"GitHub"}
+                  regular={false}
+                  href={PROFILE.github}/>
+              </div>
+              <Link
+                regular={true}
+                text={"LinkedIn"}
+                href={PROFILE.linkedin}/>
+              <Link
+                text={"Email"}
+                regular={true}
+                href={`mailto:${PROFILE.email}`}/>
+              <Link
+                text={"Phone"}
+                regular={true}
+                href={`tel:${PROFILE.phone.replace(/[^0-9+]/g, "")}`}/>
+            </div>
+          </div>
+          {/* Polaroid photo */}
+          <div className="shrink-0 self-center sm:self-start">
+            <div className="border border-neutral-200 bg-white p-2 pb-7 inset-shadow-sm/25 shadow-lg/35 shadow-blue-500 inset-shadow-blue-300/60">
+              <img
+                src={PROFILE.selfie}
+                alt={`${PROFILE.name} — self portrait`}
+                className="block w-32 object-cover sm:w-45"
+              />
+              <p className="font-['JetBrains_Mono',ui-monospace,monospace] mt-2 text-center text-[10px] tracking-wide text-neutral-500"></p>
+            </div>
           </div>
         </header>
 
-        <div className="mb-14 h-px w-full bg-neutral-800 sm:mb-16" />
+        <div className="mb-14 h-px w-full bg-neutral-200" />
 
         {/* Skills */}
         <section className="mb-14 sm:mb-16">
@@ -72,7 +76,7 @@ export default function Portfolio() {
           <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
             {Object.entries(SKILLS).map(([category, items]) => (
               <div key={category}>
-                <p className="font-['JetBrains_Mono',ui-monospace,monospace] mb-2 text-[11px] tracking-widest text-violet-400/80">
+                <p className="mb-2 text-xs font-extrabold tracking-widest text-blue-500/80 80">
                   {category.toUpperCase()}
                 </p>
                 <div className="flex flex-wrap gap-1.5">
@@ -85,74 +89,71 @@ export default function Portfolio() {
           </div>
         </section>
 
-        <div className="mb-14 h-px w-full bg-neutral-800 sm:mb-16" />
+        <div className="mb-14 h-px w-full bg-neutral-200 sm:mb-16" />
 
         {/* Projects */}
-        <section>
+        <section className="flex flex-col gap-5">
           <SectionHeading>Projects</SectionHeading>
-          <div className="flex flex-col gap-8 sm:gap-10">
+          <div className="flex flex-col gap-5">
             {PROJECTS.map((p, i) => {
               const isOpenSource = Boolean(p.link);
               return (
                 <article
                   key={p.name}
-                  className="border-l border-neutral-800 pl-4 transition-[border-color,padding] duration-200 hover:border-violet-400 hover:pl-5"
+                  className="rounded-xl border inset-shadow-sm hover:inset-shadow-blue-500/50 inset-shadow-blue-500/25 hover:bg-black/2.5 border-neutral-200 p-6 transition-all duration-250 hover:border-neutral-300"
                 >
                   <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
-                    <div className="flex items-baseline gap-3">
-                      <span className="font-['JetBrains_Mono',ui-monospace,monospace] text-xs text-violet-400">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      {p.link ? (
-                        <a
-                          href={p.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-base font-medium text-white underline decoration-neutral-600 decoration-1 underline-offset-4 hover:decoration-violet-400 sm:text-[17px]"
-                        >
-                            {p.name}
-                        </a>
-                      ) : (
-                        <h3 className="text-base font-medium text-white sm:text-[17px]">{p.name}</h3>
-                      )}
-                    </div>
-                    <span className="font-['JetBrains_Mono',ui-monospace,monospace] text-[11px] text-neutral-500">
+                    <h3 className="text-base font-extrabold text-neutral-900 sm:text-[17px]">
+                      {p.name}
+                    </h3>
+                    <span className="text-[13px] text-neutral-500">
                       {p.period}
                     </span>
                   </div>
 
-                  <p className="font-['JetBrains_Mono',ui-monospace,monospace] mt-1 text-xs uppercase tracking-wide text-neutral-500">
-                    {p.definition}
-                  </p>
-
-                  <span
-                    className={`mt-2 inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-[11px] font-medium ring-1 ${
-                      isOpenSource
-                        ? "bg-emerald-500/10 text-emerald-300 ring-emerald-500/20"
-                        : "bg-neutral-500/10 text-neutral-400 ring-neutral-500/20"
-                    }`}
-                  >
+                  <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                    <p className="text-[13px] font-medium text-neutral-500">{p.definition}</p>
+                    <span className="text-neutral-300">·</span>
                     <span
-                      className={`h-1.5 w-1.5 rounded-full ${isOpenSource ? "bg-emerald-400" : "bg-neutral-500"}`}
-                    />
-                    {isOpenSource ? "Open-Source" : "Closed-Source"}
-                  </span>
+                      className={`inline-flex items-center gap-1.5 text-[13px] font-semibold ${
+                        isOpenSource
+                          ? "text-emerald-600"
+                          : "text-neutral-500"
+                      }`}
+                    >
+                      {isOpenSource ? "Open-Source" : "Closed-Source"}
+                    </span>
+                  </div>
 
-                  <p className="mt-3 text-sm leading-relaxed text-neutral-400">{p.description}</p>
+                  <div className="w-full h-px mt-2.5 bg-zinc-500/35" />
 
-                  <div className="mt-3 flex flex-wrap gap-1.5">
-                    {p.stack.map((s) => (
-                      <span key={s} className="rounded bg-white/5 px-1.5 py-0.5 text-xs font-medium text-neutral-500">
-                        {s}
-                      </span>
-                    ))}
+                  <p className="mt-3 text-sm leading-relaxed text-neutral-600">{p.description}</p>
+
+                  <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
+                    <div className="flex flex-wrap gap-1.5">
+                      {p.stack.map((s) => (
+                        <span
+                          key={s}
+                          className="rounded bg-neutral-900/5 px-1.5 py-0.5 text-xs font-medium text-neutral-600"
+                        >
+                          {s}
+                        </span>
+                      ))}
+                    </div>
+
+                    {p.link && (
+                      <Button 
+                        isLink={true}
+                        href={p.link} 
+                        text={"Visit Repo"}
+                        size={1} />
+                    )}
                   </div>
                 </article>
               );
             })}
           </div>
         </section>
-
       </div>
     </div>
   );
