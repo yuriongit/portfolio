@@ -8,7 +8,6 @@ import go from "../assets/go.svg";
 import javascript from "../assets/javascript.svg";
 import typescript from "../assets/typescript.svg";
 import mongodb from "../assets/mongodb.svg";
-import supabase from "../assets/supabase.svg";
 import redis from "../assets/redis.svg";
 import react from "../assets/react.svg";
 import python from "../assets/python.svg";
@@ -17,6 +16,9 @@ import railway from "../assets/railway.svg";
 import mysql from "../assets/mysql.svg";
 import postgresql from "../assets/postgresql.svg";
 import nodedotjs from "../assets/nodedotjs.svg";
+import linux from "../assets/linux.svg";
+import ubuntu from "../assets/ubuntu.svg";
+import gin from "../assets/gin.svg";
 
 // Map skill names to imported icons
 const iconMap = {
@@ -29,7 +31,6 @@ const iconMap = {
   JavaScript: javascript,
   TypeScript: typescript,
   MongoDB: mongodb,
-  Supabase: supabase,
   Redis: redis,
   React: react,
   Python: python,
@@ -39,6 +40,9 @@ const iconMap = {
   MySQL: mysql,
   PostgreSQL: postgresql,
   "Node.js": nodedotjs,
+  Linux: linux,
+  Ubuntu: ubuntu,
+  Gin: gin
 };
 
 export const SkillBadge = ({ name }) => {

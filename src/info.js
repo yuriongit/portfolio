@@ -9,18 +9,17 @@ export const PROFILE = {
   email: "yuri.dev44@outlook.com",
   phone: "365-737-0015",
   github: "https://github.com/yuriongit",
-  linkedin: "http://linkedin.com/in/yuri-okeren/",
   resumeUrl: resume,
   selfie: selfie,
 };
 
 export const SKILLS = {
-  Languages: ["TypeScript", "Go", "Python", "SQL", "JavaScript"],
-  "Frameworks & Libraries": ["Express", "FastAPI", "React"],
-  Databases: ["MongoDB", "PostgreSQL", "MySQL", "Redis", "Supabase"],
-  "DevOps & Infrastructure": ["GitHub Actions", "Docker"],
-  "Build Tools & Runtimes": ["Bun", "Node.js"],
-  "Deployment & Hosting": ["Railway", "Vercel"]
+  "Languages": ["TypeScript", "JavaScript", "Python", "Go", "SQL"],
+  "Frameworks": ["Express", "FastAPI", "Gin", "React"],
+  "Databases": ["MongoDB", "PostgreSQL", "Redis", "MySQL"],
+  "DevOps & Infrastructure": ["GitHub Actions", "Docker", ],
+  "Build Tools & Runtimes": ["Node.js", "Bun"],
+  "Development Environment": ["Linux", "Ubuntu"]
 };
 
 
@@ -37,52 +36,51 @@ export const SKILL_META = {
   JavaScript: "JavaScript",
   TypeScript: "TypeScript",
   MongoDB: "mongodb",
-  Supabase: "supabase",
   Redis: "redis",
   React: "react",
   Python: "python",
   FastAPI: "fastapi",
-  Vercel: "vercel",
-  Railway: "railway",
   MySQL: "mysql",
   PostgreSQL: "postgresql",
   "Node.js": "nodedotjs",
+  "Linux": "linux",
+  "Ubuntu": "ubuntu",
+  "Gin": "gin",
 }
 
 export const PROJECTS = [
   {
-    name: "CourtDreamz",
-    definition: "Fantasy Basketball Platform",
-    period: "Jun, 2026 - Present",
-    stack: ["Python", "FastAPI", "MongoDB", "Redis", "Cloudinary"],
+    name: "Punch",
+    definition: "Distributed Load Tester",
+    period: "Aug, 2026 - Present",
+    stack: ["Go", "Gin", "Docker", "Redis", "TypeScript", "React"],
     description:
-      "Built a multi-service fantasy sports platform integrating the Swar NBA API into a custom FastAPI service with Redis caching and background workers for automated data synchronization.",
-    link: null,
-  },
-  {
-    name: "N/A - Clientele Internal Tooling",
-    definition: "Internal Product Management System",
-    description: "Built an internal product management system for an embroidery business, replacing a manual and error-prone Google Sheets workflow for tracking customer orders.",
-    period: "Apr, 2026",
-    stack: ["TypeScript", "Express", "PostgreSQL", "Supabase"],
-    link: null
+      "Building a small HTTP load testing web-app/CLI-tool in Go with Gin to further improve with Docker, GitHub Actions, and coordinating concurrency in Go. Currently live.",
+    link: "https://github.com/yuriongit/punch",
   },
   {
     name: "Lilify",
     definition: "URL Shortener",
-    period: "Jul, 2026 - Aug, 2026",
-    stack: ["TypeScript", "Express", "MongoDB", "Redis", "Docker", "GitHub Actions"],
+    period: "Jul, 2026 - Sep, 2026",
+    stack: ["TypeScript", "Express", "MongoDB", "Docker", "GitHub Actions"],
     description:
-      "A small project primarily focused on learning and applying GitHub Actions and Docker. Currently live; see repository for more details.",
+      "A small project focused on learning and utilizing Docker and GitHub Actions. Currently live.",
     link: "https://github.com/yuriongit/lilify",
   },
   {
-    name: "Punch",
-    definition: "Distributed Load Tester",
-    period: "Jul, 2026",
-    stack: ["Go", "Docker", "PowerShell"],
-    description:
-      "Built a small HTTP load testing tool in Go to explore concurrency, goroutines, mutexes, and coordinating concurrent workers.",
+    name: "CourtDreamz",
+    definition: "NBA Fantasy Basketball",
+    period: "Jun, 2026 - Present",
+    stack: ["Python", "FastAPI", "MongoDB", "Redis", "Cloudinary"],
+    description: "Building an NBA fantasy basketball application that integrates the NBA Stats API into a custom FastAPI service with Redis caching and background workers for automated data synchronization.",
     link: null,
+  },
+  {
+    name: "N/A",
+    definition: "Internal Product Management System",
+    description: "Built an internal product management system for an embroidery company, replacing a manual and error-prone Google-Sheets workflow for tracking customer orders.",
+    period: "Apr, 2026",
+    stack: ["TypeScript", "Express", "PostgreSQL", "Supabase"],
+    link: null
   },
 ];
