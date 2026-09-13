@@ -51,20 +51,20 @@ export const SKILL_META = {
 export const PROJECTS = [
   {
     name: "Punch",
-    definition: "Distributed Load Tester",
+    definition: "HTTP Load Tester",
     period: "Aug, 2026 - Present",
-    stack: ["Go", "Gin", "Docker", "Redis", "TypeScript", "React"],
+    stack: ["Go", "BubbleTea", "Gin", "Docker", "Redis", "TypeScript", "React"],
     description:
-      "Building a small HTTP load testing web-app/CLI-tool in Go with Gin to further improve with Docker, GitHub Actions, and coordinating concurrency in Go. Currently live.",
+      "Punch is a HTTP load tester. Planned to be available as both a CLI tool and web app. Being built to deepen my understanding of Docker, GitHub Actions, and handling concurrency with Go.",
     link: "https://github.com/yuriongit/punch",
   },
   {
     name: "Lilify",
     definition: "URL Shortener",
-    period: "Jul, 2026 - Sep, 2026",
+    period: "Jul, 2026 - Aug, 2026",
     stack: ["TypeScript", "Express", "MongoDB", "Docker", "GitHub Actions"],
     description:
-      "A small project focused on learning and utilizing Docker and GitHub Actions. Currently live.",
+      "A simple URL shortener, built with the purpose of focusing on learning and utilizing Docker alongside GitHub Actions.",
     link: "https://github.com/yuriongit/lilify",
   },
   {
