@@ -1,11 +1,9 @@
 # Portfolio
 
-This repository contains the source code for my personal portfolio website.
+Contains the source code for my personal portfolio.
 
 Built with:
 
-* React
-* Tailwind CSS
-* Bun
-
-Feel free to explore the code or check out the live site.
+- React
+- Tailwind CSS
+- Bun
