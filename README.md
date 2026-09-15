@@ -1,9 +1,12 @@
 # Portfolio
 
-Contains the source code for my personal portfolio.
+This is my portfolio's repository. It contains the source code for my portfolio.
 
-Built with:
+## Tools
 
 - React
 - Tailwind CSS
-- Bun
+- Vite
+
+## Link
+[yuriok-me.vercel.app](yuriok-me.vercel.app)
