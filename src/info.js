@@ -53,9 +53,9 @@ export const PROJECTS = [
     name: "Punch",
     definition: "HTTP Load Tester",
     period: "Aug, 2026 - Present",
-    stack: ["Go", "BubbleTea", "Gin", "Docker", "Redis", "TypeScript", "React"],
+    stack: ["Go", "Cobra", "GitHub Actions" ],
     description:
-      "Punch is a HTTP load tester. Planned to be available as both a CLI tool and web app. Being built to deepen my understanding of Docker, GitHub Actions, and handling concurrency with Go.",
+    "Punch is a customizable, simple, and lightweight HTTP command-line load testing tool written in Go. You give it a config file describing the test you want to run, and it sends requests to your target (and its children (multiple paths)), and reports how it performed.",
     link: "https://github.com/yuriongit/punch",
   },
   {
