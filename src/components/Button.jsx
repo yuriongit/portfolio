@@ -1,7 +1,7 @@
-export const Button = ({ isLink, href, text, size: sz }) => {
+export const Button = ({ isLink, secondary, href, onClick, text, size: sz }) => {
   let size = sz;
   const baseStyle =
-    "bg-blue-500 hover:bg-blue-100 border border-blue-500/35 hover:text-blue-500 text-white rounded-md font-semibold transition-all";
+    "border hover:cursor-pointer border-blue-500/35 rounded-md font-semibold transition-all";
 
   const small = 0;
   const regular = 1;
@@ -12,31 +12,39 @@ export const Button = ({ isLink, href, text, size: sz }) => {
   switch (size) {
     case small:
       size = smallClass;
-      break
+      break;
     case regular:
       size = regularClass;
-      break
+      break;
   }
 
-  switch (isLink) {
-    case true:
-      return (
-        <a href={href} target="_blank" rel="noopener noreferrer" className={`${baseStyle} ${size}`}>
-          {text}
-        </a>
-      );
-    case false:
-      return <button className={`${baseStyle} ${size}`}>{text}</button>;
+  const primaryStyle = "bg-blue-500 hover:bg-blue-500/85 text-white";
+  const secondaryStyle = "bg-white text-blue-500 hover:bg-blue-500/6"
+
+  const styleClass = secondary ? secondaryStyle : primaryStyle;
+
+  const buttonClass = `${baseStyle} ${styleClass} ${size}`;
+
+  if (isLink) {
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer" className={buttonClass}>
+        {text}
+      </a>
+    );
   }
 
-  return;
+  return (
+    <button onClick={() => onClick()} type="button" className={buttonClass}>
+      {text}
+    </button>
+  );
 };
 
 export const Link = ({ regular, text, href }) => {
   let style = ""
   const primaryStyle =
-    "text-black font-semibold px-2.5 w-fit py-0.5 transition-all hover:text-neutral-800 underline decoration-dashed underline-offset-4 decoration-transparent hover:decoration-neutral-800";
-  const regularStyle = "text-neutral-600 w-fit hover:text-neutral-900 transition-all hover:text-neutral-600 underline decoration-dashed underline-offset-4 decoration-transparent hover:decoration-neutral-600"
+    "text-black font-semibold px-2.5 w-fit py-0.5 transition-all hover:text-neutral-800 decoration-1 underline decoration-dashed underline-offset-4 decoration-transparent hover:decoration-neutral-800";
+  const regularStyle = "text-neutral-600 w-fit decoration-1 hover:text-neutral-900 transition-all hover:text-neutral-600 underline decoration-dashed underline-offset-4 decoration-transparent hover:decoration-neutral-600"
   
   switch (regular) {
     case true:

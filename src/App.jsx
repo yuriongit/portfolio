@@ -1,11 +1,13 @@
-import { SKILLS } from "./info";
-import { PROFILE } from "./info";
-import { PROJECTS } from "./info";
+import { useState } from "react";
+import { SKILLS, PROFILE, PROJECTS } from "./info";
 import { SkillBadge } from "./components/SkillBadge";
 import { SectionHeading } from "./components/SectionHeading";
 import { Button, Link } from "./components/Button";
+import { Lightbox } from "./components/Lightbox";
 
 export default function Portfolio() {
+  const [activeProject, setActiveProject] = useState(null);
+
   return (
     <div className="relative min-h-screen overflow-hidden bg-white text-neutral-900 antialiased tracking-tighter">
       <div className="relative mx-auto max-w-2xl px-5 py-16 sm:px-6 sm:py-24 w-full">
@@ -21,13 +23,18 @@ export default function Portfolio() {
                     <span className="ml-4">{PROFILE.name.slice(5, 11)}</span>,
                   </h1>
                 </div>
-                <p className="max-w-lg text-[15px] leading-relaxed text-neutral-600">
+                <p className="max-w-sm pr-7.5 text-[15px] leading-relaxed text-neutral-600">
                   a{" "}
                   <span className="text-blue-500 font-extrabold underline decoration-blue-500 decoration-dashed underline-offset-4 uppercase">
                     Software Engineer
                   </span>{" "}
-                  with 1½ years of experience building full-stack applications, with a focus on backend systems, APIs,
-                  and service architecture.
+                  with 1½ years of experience building full-stack applications, with a focus on
+                  <span className="font-semibold text-neutral-700 italic"> backend</span> systems, APIs, and service architecture.
+                  <br/>
+                  <br/>
+                  <span className="italic font-normal">{" "}
+                    Currently open to employment.
+                  </span>
                 </p>
               </div>
             </div>
@@ -58,7 +65,7 @@ export default function Portfolio() {
           <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
             {Object.entries(SKILLS).map(([category, items]) => (
               <div key={category}>
-                <p className="mb-2 text-xs font-extrabold tracking-widest text-blue-500/80 80">
+                <p className="mb-2 text-xs font-extrabold tracking-widest text-blue-500/80">
                   {category.toUpperCase()}
                 </p>
                 <div className="flex flex-wrap gap-1.5">
@@ -79,49 +86,73 @@ export default function Portfolio() {
           <div className="flex flex-col gap-5">
             {PROJECTS.map((p) => {
               const isOpenSource = Boolean(p.link);
+              const hasImages = Boolean(p.images && p.images.length > 0);
               return (
                 <article
                   key={p.name}
-                  className="rounded-xl border inset-shadow-sm hover:inset-shadow-blue-500/50 inset-shadow-blue-500/25 hover:bg-blue-50/25 border-neutral-200 py-10 transition-all duration-150 hover:border-neutral-300 flex flex-col justify-center items-center text-left w-full gap-0.5 px-5 sm:px-7.5"
+                  className="rounded-xl border inset-shadow-sm hover:inset-shadow-blue-500/50 inset-shadow-blue-500/25 hover:bg-blue-50/10 border-neutral-200 py-10 transition-all duration-150 hover:border-neutral-300 flex flex-col justify-center items-center text-left w-full gap-0.5 px-5 sm:px-7.5"
                 >
                   <div className="flex flex-col items-start text-left w-full">
-                    <div className="w-full">
+                    <div className="w-full space-y-1">
                       <div className="flex w-full justify-between items-center">
                         <h3 className="text-base font-extrabold text-neutral-900 sm:text-xl">{p.name}</h3>
-      
                         <span className="text-xs italic text-neutral-500">{p.period}</span>
                       </div>
                       <p className="text-[13px] font-medium text-neutral-600">{p.definition}</p>
-                      
+
                       <span
-                        className={`text-[13px] font-bold ${
-                          isOpenSource ? "text-emerald-600" : "text-neutral-400"
-                        }`}
+                        className={`text-[13px] font-bold ${isOpenSource ? "text-emerald-600" : "text-neutral-400"}`}
                       >
                         {isOpenSource ? "Open-Source" : "Closed-Source"}
                       </span>
                     </div>
-  
+
                     <div className="w-full h-px my-5 bg-zinc-500/35" />
-  
-                    <div className="flex flex-col w-full gap-10 items-start">
-                      <p className="mt-1.5 text-sm max-w-md sm:pr-10 leading-relaxed text-neutral-600">{p.description}</p>
-    
-                      <div className="flex w-full justify-between items-center">
-                        <div className="flex flex-wrap items-center justify-between gap-3 w-fit">
+
+                    <div className="flex flex-col w-full gap-7.5 items-start">
+                      <p className="mt-1 text-sm max-w-full leading-relaxed text-neutral-600">{p.description}</p>
+
+                      <div className="flex flex-col w-full justify-between items-start gap-7.5">
+                        <div className="flex flex-wrap items-center justify-between w-fit">
                           <div className="flex flex-wrap gap-1.5">
                             {p.stack.map((s) => (
                               <span
                                 key={s}
-                                className="rounded bg-neutral-900/6 px-1.5 py-0.5 text-xs font-semibold text-neutral-600"
+                                className="rounded bg-neutral-900/10 px-1.5 py-0.5 text-xs font-semibold text-neutral-600"
                               >
                                 {s}
                               </span>
                             ))}
                           </div>
                         </div>
-                        
-                        {p.link && <Button isLink={true} href={p.link} text={"Visit Repo"} size={1} />}
+
+                        <div className="space-x-2.5">
+                          {p.link && (
+                            <Button
+                              isLink={true}
+                              href={p.link}
+                              text={"Visit Repo"}
+                              size={1}
+                            />
+                          )}
+                          {hasImages && (
+                            <div
+                              className="inline-block"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <Button
+                                secondary={true}
+                                isLink={false}
+                                text={"View Images"}
+                                size={1}
+                                onClick={(e) => {
+                                  if (e && e.stopPropagation) e.stopPropagation();
+                                  setActiveProject(p);
+                                }}
+                              />
+                            </div>
+                          )}
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -131,6 +162,15 @@ export default function Portfolio() {
           </div>
         </section>
       </div>
+
+      {/* Lightbox Modal */}
+      {activeProject && (
+        <Lightbox
+          images={activeProject.images}
+          initialIndex={0}
+          onClose={() => setActiveProject(null)}
+        />
+      )}
     </div>
   );
 }
